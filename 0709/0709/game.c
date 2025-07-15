@@ -15,9 +15,9 @@ void InitBoard(char board[ROWS][COLS], int rows, int cols, char set)
 }
 void DisplayBoard(char board[ROWS][COLS], int row, int col)
 { 
+	printf("------------É¨À×----------\n");
 	int i = 0;
 	int j = 0;
-	printf("------------É¨À×----------\n");
 	for (j = 0; j <= 9; j++)
 	{
 		printf("%d ", j); // ´òÓ¡ÁÐºÅ
@@ -64,6 +64,29 @@ int GetMineCount(char mine[ROWS][COLS],int x, int y)
 	}
 	return count;
 }
+void FindBoard(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
+{
+	int m = 0;
+	int n = 0;
+	for(m = row-1;m < row+1; m++)
+	{
+		for (n = col-1; n < col+1; n++)
+		{
+			if (mine[m][n] == '0')
+			{
+				show[m][n] = '0';
+				if (m != 0 || n != 0)
+				{
+					FindBoard(mine, show, m, n);
+				}
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
+}
 void FindMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
 {
 	int x = 0;
@@ -99,6 +122,7 @@ void FindMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
 			{
 				int count = GetMineCount(mine,x,y);
 				show[x][y] = count + '0'; // ½«Êý×Ö×ª»»Îª×Ö·û
+			//	FindBoard(mine, show, x, y);
 				DisplayBoard(show, ROW, COL);
 				win++;
 			}
