@@ -159,6 +159,11 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+struct stu
+{
+	char name[30];
+	int age;
+};
 void printf_arr(int* arr, int sz)
 {
 	int i = 0;
@@ -168,9 +173,22 @@ void printf_arr(int* arr, int sz)
 	}
 	printf("\n");
 }
+void printf_stu(struct stu* arr, int sz)
+{
+	int i = 0;
+	for (i = 0;i < sz;i++)
+	{
+		printf("name: %s, age: %d\n", arr[i].name, arr[i].age);
+	}
+	printf("\n");
+}
 cmp_int(const void* p1, const void* p2)
 {
 	return (*(int*)p1 - *(int*)p2);
+}
+cmp_stu(const void* p1,const void* p2)
+{
+	return strcmp(((struct stu*)p1)->name, ((struct stu*)p2)->name);
 }
 void swap(char* num1, char* num2,size_t width)
 {
@@ -207,8 +225,17 @@ test1()
 	bubble_sort(arr, sz, sizeof(arr[0]), cmp_int);
 	printf_arr(arr, sz);
 }
+test2()
+{
+	struct stu arr[5] = { {"zhangsan", 18}, {"lisi", 20}, {"wangwu", 22}, {"zhaoliu", 19}, {"tianqi", 21} };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	printf_stu(arr, sz);
+	bubble_sort(arr, sz, sizeof(arr[0]), cmp_stu);
+	printf_stu(arr, sz);
+}
 int main()
 {
-	test1();
+	//test1();
+	test2();
 	return 0;
 }
