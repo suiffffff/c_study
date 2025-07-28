@@ -93,14 +93,14 @@
 char* my_strcat(char* dest, const char* src)
 {
 	char* ret = dest;
-	while (*dest++ != '\0')
+	while (*dest != '\0')
+		dest++;
+	while (*dest++ = *src++)
 	{
-		while (*dest++ = *src++)
-		{
-			; 
-		}
+		; 
 	}
-	return dest;
+
+	return ret;
 }
 int main()
 {
