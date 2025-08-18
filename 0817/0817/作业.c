@@ -197,25 +197,25 @@
 //	Fun(num);
 //	return 0;
 //}
-int Fun(int a,int b)
-{
-	
-	int i = 0;
-	int count = 0;
-	for (i = 0;i < 32;i++)
-	{
-		if (!(((a >> i) & 1 ) == 0 && ((b >> i) & 1) == 0) && !(((a >> i) & 1) == 1 && ((b >> i) & 1) == 1))
-		{
-			count++;
-		}
-	}
-	return count;
-}
-int main()
-{
-	int a = 0, b = 0;
-	scanf("%d %d", &a, &b);
-	int ret = Fun(a,b);
-	printf("%d", ret);
-	return 0;
-}
+//int Fun(int a,int b)
+//{
+//	
+//	int i = 0;
+//	int count = 0;
+//	for (i = 0;i < 32;i++)
+//	{
+//		if (!(((a >> i) & 1 ) == 0 && ((b >> i) & 1) == 0) && !(((a >> i) & 1) == 1 && ((b >> i) & 1) == 1))
+//		{
+//			count++;
+//		}
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	int a = 0, b = 0;
+//	scanf("%d %d", &a, &b);
+//	int ret = Fun(a,b);
+//	printf("%d", ret);
+//	return 0;
+//}
