@@ -103,43 +103,113 @@
 //}
 
 
-#define _CRT_SECURE_NO_WARNINGS 1
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//
+//void Fun(int arr[], int sz)
+//{
+//	int* left = arr;
+//	int* right = arr + sz - 1;
+//
+//	while (left < right)
+//	{
+//		while (((left < right) && (*left) % 2 != 0))
+//		{
+//			left++;
+//		}
+//		while (((left < right) && (*right) % 2 == 0))
+//		{
+//			right--;
+//		}
+//		if (left < right)
+//		{
+//			int tmp = *left;
+//			*left = *right;
+//			*right = tmp;
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
+//	int i = 0;
+//	int sz = (sizeof(arr) / sizeof(arr[0]));
+//	Fun(arr, sz);
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d\n", arr[i]);
+//	}
+//	return 0;
+//}
+
+//ÊÓÆµ·½·¨
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
+//void Reserve(char* str)
+//{
+//	int len = strlen(str);
+//	int left = 0;
+//	int right = len - 1;
+//	while(left < right)
+//	{
+//		char temp = str[left];
+//		str[left] = str[right];
+//		str[right] = temp;
+//		left++;
+//		right--;
+//	}
+//}
+//int main()
+//{
+//	char str[10001] = { 0 };
+//	while(gets(str))
+//	{
+//		Reserve(str);
+//		printf("%s\n", str);
+//	}
+//	return 0;
+//}
 
-void Fun(int arr[], int sz)
+void leftround1(char* str, int k)
 {
-	int* left = arr;
-	int* right = arr + sz - 1;
-
-	while (left < right)
+	size_t len = strlen(str);
+	int time = k % len; 
+	int i = 0;
+	int j = 0;
+	for (i = 0;i < time;i++)
 	{
-		while (((left < right) && (*left) % 2 != 0))
+		char temp = str[0];
+		for (j = 0;j < len - 1;j++)
 		{
-			left++;
+			str[j] = str[j + 1];
 		}
-		while (((left < right) && (*right) % 2 == 0))
-		{
-			right--;
-		}
-		if (left < right)
-		{
-			int tmp = *left;
-			*left = *right;
-			*right = tmp;
-		}
+		str[j] = temp;
 	}
+}
+
+void leftround(char* str, int k)
+{
+	int len = strlen(str);
+	int time = k % len;
+	char tmp[256] = { 0 };
+	strcpy(tmp, str + time);
+	strncat(tmp, str, time);
+	strcpy(str, tmp);
 }
 int main()
 {
-	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
-	int i = 0;
-	int sz = (sizeof(arr) / sizeof(arr[0]));
-	Fun(arr, sz);
-	for (i = 0; i < sz; i++)
+	int k = 0;
+	char str[100] = { 0 };
+	while (gets(str))
 	{
-		printf("%d\n", arr[i]);
+		scanf("%d", &k);
+		leftround(str, k);
+		printf("%s\n", str);
 	}
 	return 0;
 }
+ 
