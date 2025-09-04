@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "SeqList.h"
+#include "contact.h"
 
 void SLInit(SL* ps)
 {
@@ -9,7 +10,7 @@ void SLInit(SL* ps)
 }
 void SLDestroy(SL* ps)
 {
-	if(ps != NULL)
+	if (ps != NULL)
 	{
 		free(ps->arr);
 	}
@@ -17,18 +18,18 @@ void SLDestroy(SL* ps)
 	ps->size = 0;
 	ps->capacity = 0;
 }
-void SLPrint(SL s)
-{
-	for(int i = 0; i < s.size; i++)
-	{
-		printf("%d ", s.arr[i]);
-	}
-	printf("\n");
-}
+//void SLPrint(SL s)
+//{
+//	for (int i = 0; i < s.size; i++)
+//	{
+//		printf("%d ", s.arr[i]);
+//	}
+//	printf("\n");
+//}
 
 void SLCheckCapacity(SL* ps)
 {
-	if(ps->size == ps->capacity)
+	if (ps->size == ps->capacity)
 	{
 		int newcapacity = ps->capacity == 0 ? 4 : ps->capacity * 2;
 		SL* tmp = (SLDataType*)realloc(ps->arr, sizeof(SLDataType) * newcapacity);
@@ -45,14 +46,14 @@ void SLPushBack(SL* ps, SLDataType x)
 {
 	assert(ps);
 	SLCheckCapacity(ps);
-	ps->arr[ps->size++] = x; 
+	ps->arr[ps->size++] = x;
 }
 
 void SLPushFront(SL* ps, SLDataType x)
 {
 	assert(ps);
 	SLCheckCapacity(ps);
-	for(int i = ps->size; i > 0; i--)
+	for (int i = ps->size; i > 0; i--)
 	{
 		ps->arr[i] = ps->arr[i - 1];
 	}
@@ -68,7 +69,7 @@ void SLPopBack(SL* ps)
 void SLPopFront(SL* ps)
 {
 	assert(ps && ps->size != 0);
-	for(int i = 0; i < ps->size - 1; i++)
+	for (int i = 0; i < ps->size - 1; i++)
 	{
 		ps->arr[i] = ps->arr[i + 1];
 	}
@@ -96,13 +97,13 @@ void SLErase(SL* ps, int pos)
 	ps->size--;
 }
 
-int SLFind(SL* ps, SLDataType x)
-{
-	assert(ps);
-	for (int i = 0;i < ps->size;i++)
-	{
-		if (ps->arr[i] == x)
-			return i;
-	}
-	return -1;
-}
+//int SLFind(SL* ps, SLDataType x)
+//{
+//	assert(ps);
+//	for (int i = 0;i < ps->size;i++)
+//	{
+//		if (ps->arr[i] == x)
+//			return i;
+//	}
+//	return -1;
+//}

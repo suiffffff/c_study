@@ -19,9 +19,23 @@ void SeqListTest1()
 	SLPrint(sl);
 	SLDestroy(&sl);
 }
-
+void SeqListTest2()
+{
+	SL s1;
+	SLInit(&s1);
+	SLPushBack(&s1, 1);
+	SLPushBack(&s1, 2);
+	SLPushBack(&s1, 3);
+	SLPushBack(&s1, 4);
+	//SLInsert(&s1, 0, 99);
+	//SLInsert(&s1, s1.size, 99);
+	SLErase(&s1,0);
+	SLPrint(s1);
+	SLDestroy(&s1);
+}
 int main()
 {
-	SeqListTest1();
+	/*SeqListTest1();*/
+	SeqListTest2();
 	return 0;
 }
