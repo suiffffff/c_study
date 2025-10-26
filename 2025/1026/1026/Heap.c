@@ -120,6 +120,13 @@ void HeapSort(int* arr, int n)
 	{
 		AdjustDown(arr, i, n);
 	}
+	int end = n - 1;
+	while (end > 0)
+	{
+		Swap(&arr[0], &arr[end]);
+		AdjustDown(arr, 0, end);
+		end--;
+	}
 }
 void HPPrint(HP* php)
 {
